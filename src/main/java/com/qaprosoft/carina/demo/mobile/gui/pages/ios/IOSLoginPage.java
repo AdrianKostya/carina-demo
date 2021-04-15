@@ -1,5 +1,7 @@
 package com.qaprosoft.carina.demo.mobile.gui.pages.ios;
 
+import com.qaprosoft.carina.core.foundation.utils.R;
+import com.qaprosoft.carina.demo.constant.ProjectConstant;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -11,9 +13,10 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.Clas
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.Predicate;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.CarinaDescriptionPageBase;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.LoginPageBase;
+import com.qaprosoft.carina.demo.constant.ProjectConstant;
 
 @DeviceType(pageType = Type.IOS_PHONE, parentClass = LoginPageBase.class)
-public class LoginPage extends LoginPageBase {
+public class IOSLoginPage extends LoginPageBase {
 
 	@FindBy(xpath = "type = 'XCUIElementTypeTextField'")
 	@Predicate
@@ -39,7 +42,7 @@ public class LoginPage extends LoginPageBase {
 	@Predicate
 	private ExtendedWebElement loginBtn;
 
-	public LoginPage(WebDriver driver) {
+	public IOSLoginPage(WebDriver driver) {
 		super(driver);
 	}
 
@@ -86,22 +89,39 @@ public class LoginPage extends LoginPageBase {
 	}
 
 	@Override
-	public boolean verifyFieldsArePresent() {
-		if (nameInputField.isElementPresent()&&passwordInputField.isElementPresent()
-				&& maleRadioBtn.isElementPresent()
-				&&femaleRadioBtn.isElementPresent()
-		){
-			return true;
-		}
-		return false;
+	public boolean isNameInputFieldArePresent() {
+		throw new UnsupportedOperationException(ProjectConstant.UNIMPLEMENTED_FOR_IOS);
 	}
 
-	public boolean isSexSelected(){
-		if(maleRadioBtn.isChecked()||femaleRadioBtn.isChecked()){
-			return true;
-		}
-		return false;
+	public String getName (){
+		throw new UnsupportedOperationException(ProjectConstant.UNIMPLEMENTED_FOR_IOS);
 	}
 
+	public boolean isPasswordInputFieldArePresent() {
+		throw new UnsupportedOperationException(ProjectConstant.UNIMPLEMENTED_FOR_IOS);
+	}
+
+	@Override
+	public boolean isMaleRadioBtnArePresent() {
+		throw new UnsupportedOperationException(ProjectConstant.UNIMPLEMENTED_FOR_IOS);
+	}
+
+	@Override
+	public boolean isFemaleRadioBtnArePresent() {
+		throw new UnsupportedOperationException(ProjectConstant.UNIMPLEMENTED_FOR_IOS);
+	}
+
+
+	public boolean isMaleSexSelected(){
+		throw new UnsupportedOperationException(ProjectConstant.UNIMPLEMENTED_FOR_IOS);
+	}
+
+	public boolean isFemaleSexSelected(){
+		throw new UnsupportedOperationException(ProjectConstant.UNIMPLEMENTED_FOR_IOS);
+	}
+
+	public String getPassword(){
+		throw new UnsupportedOperationException(ProjectConstant.UNIMPLEMENTED_FOR_IOS);
+	}
 
 }

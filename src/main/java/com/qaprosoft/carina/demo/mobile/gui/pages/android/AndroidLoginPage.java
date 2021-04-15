@@ -1,5 +1,6 @@
 package com.qaprosoft.carina.demo.mobile.gui.pages.android;
 
+import com.qaprosoft.carina.core.foundation.utils.R;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +13,7 @@ import com.qaprosoft.carina.demo.mobile.gui.pages.common.CarinaDescriptionPageBa
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.LoginPageBase;
 
 @DeviceType(pageType = Type.ANDROID_PHONE, parentClass = LoginPageBase.class)
-public class LoginPage extends LoginPageBase implements IMobileUtils {
+public class AndroidLoginPage extends LoginPageBase implements IMobileUtils {
 
     @FindBy(id = "name")
     private ExtendedWebElement nameInputField;
@@ -32,7 +33,7 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
     @FindBy(id = "login_button")
     private ExtendedWebElement loginBtn;
 
-    public LoginPage(WebDriver driver) {
+    public AndroidLoginPage(WebDriver driver) {
         super(driver);
     }
 
@@ -42,6 +43,13 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
         hideKeyboard();
     }
 
+    public String getName (){
+        return nameInputField.getText();
+    }
+
+    public String getPassword(){
+        return passwordInputField.getText();
+    }
     @Override
     public void typePassword(String password) {
         passwordInputField.type(password);
@@ -79,19 +87,48 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
         return clickLoginBtn();
     }
 
-    @Override
-    public boolean verifyFieldsArePresent() {
-        if (nameInputField.isElementPresent()&&passwordInputField.isElementPresent()
-                && maleRadioBtn.isElementPresent()
-                &&femaleRadioBtn.isElementPresent()
-        ){
+
+    public boolean isNameInputFieldArePresent() {
+        if (nameInputField.isElementPresent()){
             return true;
         }
         return false;
     }
 
-    public boolean isSexSelected(){
-        if(maleRadioBtn.isChecked()||femaleRadioBtn.isChecked()){
+    public boolean isPasswordInputFieldArePresent() {
+        if (passwordInputField.isElementPresent()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isMaleRadioBtnArePresent() {
+        if (maleRadioBtn.isElementPresent()){
+            return true;
+        }
+        return false;
+    }
+
+
+
+    public boolean isFemaleRadioBtnArePresent() {
+        if (femaleRadioBtn.isElementPresent()){
+            return true;
+        }
+        return false;
+    }
+
+
+
+    public boolean isMaleSexSelected(){
+        if(maleRadioBtn.isChecked()){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isFemaleSexSelected(){
+        if(femaleRadioBtn.isChecked()){
             return true;
         }
         return false;

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ContactUsPageBase.class)
-public class ContactUsPage extends ContactUsPageBase {
+public class AndroidContactUsPage extends ContactUsPageBase {
 
     @FindBy(xpath = "//input[@name='Email']")
     private ExtendedWebElement emailField;
@@ -28,7 +28,7 @@ public class ContactUsPage extends ContactUsPageBase {
     @FindBy(id = "g-recaptcha-response")
     private ExtendedWebElement recaptcha;
 
-    public ContactUsPage(WebDriver driver) {
+    public AndroidContactUsPage(WebDriver driver) {
         super(driver);
     }
 

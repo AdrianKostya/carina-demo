@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = Type.IOS_PHONE, parentClass = CarinaDescriptionPageBase.class)
-public class CarinaDescriptionPage extends CarinaDescriptionPageBase {
+public class IOSCarinaDescriptionPage extends CarinaDescriptionPageBase {
 
     private static final String THIS_METHOD_IS_DEFINED_ONLY_IN_ANDROID = "This method is not yet implemented for iOS";
 
@@ -17,7 +17,7 @@ public class CarinaDescriptionPage extends CarinaDescriptionPageBase {
     @Predicate
     private ExtendedWebElement webViewTitle;
 
-    public CarinaDescriptionPage(WebDriver driver) {
+    public IOSCarinaDescriptionPage(WebDriver driver) {
         super(driver);
     }
 

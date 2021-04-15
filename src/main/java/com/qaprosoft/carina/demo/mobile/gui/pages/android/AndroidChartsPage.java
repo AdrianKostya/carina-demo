@@ -5,9 +5,9 @@ import com.qaprosoft.carina.demo.mobile.gui.pages.common.ChartsPageBase;
 import org.openqa.selenium.WebDriver;
 
 @DeviceType(pageType = DeviceType.Type.ANDROID_PHONE, parentClass = ChartsPageBase.class)
-public class ChartsPage extends ChartsPageBase {
+public class AndroidChartsPage extends ChartsPageBase {
 
-    public ChartsPage(WebDriver driver) {
+    public AndroidChartsPage(WebDriver driver) {
         super(driver);
     }
 

@@ -1,8 +1,11 @@
 package com.qaprosoft.carina.demo;
 
+import com.qaprosoft.carina.core.foundation.crypto.CryptoConsole;
+import com.qaprosoft.carina.core.foundation.crypto.CryptoTool;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.zebrunner.agent.core.annotation.TestLabel;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.postgresql.shaded.com.ongres.scram.common.util.CryptoUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,6 +20,7 @@ import com.qaprosoft.carina.demo.mobile.gui.pages.common.WebViewPageBase;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.WelcomePageBase;
 import com.qaprosoft.carina.demo.utils.MobileContextUtils;
 import com.qaprosoft.carina.demo.utils.MobileContextUtils.View;
+import org.testng.asserts.SoftAssert;
 
 
 public class MobileSampleTest extends AbstractTest implements IMobileUtils {
@@ -39,7 +43,7 @@ public class MobileSampleTest extends AbstractTest implements IMobileUtils {
         Assert.assertTrue(carinaDescriptionPage.isPageOpened(), "Carina description page isn't opened");
     }
 
-	@Test(description = "JIRA#DEMO-0011")
+    @Test(description = "JIRA#DEMO-0011")
     @MethodOwner(owner = "qpsdemo")
     @TestLabel(name = "feature", value = {"mobile", "regression"})
     public void testWebView() {
@@ -57,7 +61,7 @@ public class MobileSampleTest extends AbstractTest implements IMobileUtils {
         hideKeyboard();
         contactUsPage.submit();
         Assert.assertTrue(contactUsPage.isSuccessMessagePresent() || contactUsPage.isRecaptchaPresent(),
-            "message was not sent or captcha was not displayed");
+                "message was not sent or captcha was not displayed");
     }
 
     @Test(description = "JIRA#DEMO-0011")
@@ -89,21 +93,29 @@ public class MobileSampleTest extends AbstractTest implements IMobileUtils {
     @Test(description = "JIRA#DEMO-0011")
     @MethodOwner(owner = "akostya")
     @TestLabel(name = "feature", value = {"mobile", "regression"})
-    public void verifyLoginPage (){
+    public void verifyLoginPage() {
+        SoftAssert softAssert = new SoftAssert();
         WelcomePageBase welcomePageBase = initPage(getDriver(), WelcomePageBase.class);
         Assert.assertTrue(welcomePageBase.isPageOpened(), "Welcome page is not opened");
         LoginPageBase loginPageBase = welcomePageBase.clickNextBtn();
-        Assert.assertTrue(loginPageBase.verifyFieldsArePresent(), "Some fields is not present");
-        Assert.assertFalse(loginPageBase.isLoginBtnActive(), "Login is active before input fields");
-        String text = "Test user";
-        loginPageBase.typeName(text);
-        loginPageBase.typePassword(R.TESTDATA.get("pass"));
+        softAssert.assertTrue(loginPageBase.isNameInputFieldArePresent(), "Name input field isn't present");
+        softAssert.assertTrue(loginPageBase.isPasswordInputFieldArePresent(), "Password input field isn't present");
+        softAssert.assertTrue(loginPageBase.isMaleRadioBtnArePresent(), "Male Btn aren't present");
+        softAssert.assertTrue(loginPageBase.isFemaleRadioBtnArePresent(), "Female Btn aren't present");
+        softAssert.assertFalse(loginPageBase.isLoginBtnActive(), "Login is active before input fields");
+        String userName = "Test user";
+        loginPageBase.typeName(userName);
+        softAssert.assertEquals(loginPageBase.getName(), userName, "Typed name is different");
+        String password = RandomStringUtils.randomAlphabetic(10);
+        loginPageBase.typePassword(password);
+        softAssert.assertEquals(loginPageBase.getPassword(), password, "Password is different");
         loginPageBase.selectMaleSex();
-        Assert.assertTrue(loginPageBase.isSexSelected());
-        Assert.assertFalse(loginPageBase.isLoginBtnActive(), "Login is active before input fields");
+        softAssert.assertTrue(loginPageBase.isMaleSexSelected(), "Male sex is not selected");
+        softAssert.assertFalse(loginPageBase.isLoginBtnActive(), "Login is active before input fields");
         loginPageBase.checkPrivacyPolicyCheckbox();
-        CarinaDescriptionPageBase carinaDescriptionPageBase=loginPageBase.clickLoginBtn();
+        CarinaDescriptionPageBase carinaDescriptionPageBase = loginPageBase.clickLoginBtn();
         Assert.assertTrue(carinaDescriptionPageBase.isPageOpened(), "Carina description page is not opened");
+        softAssert.assertAll();
     }
 
 

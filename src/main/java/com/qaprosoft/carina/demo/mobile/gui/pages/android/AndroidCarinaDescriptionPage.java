@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 @DeviceType(pageType = Type.ANDROID_PHONE, parentClass = CarinaDescriptionPageBase.class)
-public class CarinaDescriptionPage extends CarinaDescriptionPageBase {
+public class AndroidCarinaDescriptionPage extends CarinaDescriptionPageBase {
 
     @FindBy(id = "content_frame")
     private ExtendedWebElement webViewContent;
@@ -31,7 +31,7 @@ public class CarinaDescriptionPage extends CarinaDescriptionPageBase {
     @FindBy(className = "android.widget.ImageButton")
     private ExtendedWebElement leftMenuButton;
 
-    public CarinaDescriptionPage(WebDriver driver) {
+    public AndroidCarinaDescriptionPage(WebDriver driver) {
         super(driver);
     }
 
