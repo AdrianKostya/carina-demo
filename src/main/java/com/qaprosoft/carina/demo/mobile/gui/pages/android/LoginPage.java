@@ -79,4 +79,23 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
         return clickLoginBtn();
     }
 
+    @Override
+    public boolean verifyFieldsArePresent() {
+        if (nameInputField.isElementPresent()&&passwordInputField.isElementPresent()
+                && maleRadioBtn.isElementPresent()
+                &&femaleRadioBtn.isElementPresent()
+        ){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isSexSelected(){
+        if(maleRadioBtn.isChecked()||femaleRadioBtn.isChecked()){
+            return true;
+        }
+        return false;
+    }
+
+
 }

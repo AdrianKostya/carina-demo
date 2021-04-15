@@ -1,5 +1,6 @@
 package com.qaprosoft.carina.demo;
 
+import com.qaprosoft.carina.core.foundation.utils.R;
 import com.zebrunner.agent.core.annotation.TestLabel;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.testng.Assert;
@@ -84,5 +85,26 @@ public class MobileSampleTest extends AbstractTest implements IMobileUtils {
         uiElements.clickOnOtherRadioButton();
         Assert.assertTrue(uiElements.isOthersRadioButtonSelected(), "Others radio button was not selected!");
     }
+
+    @Test(description = "JIRA#DEMO-0011")
+    @MethodOwner(owner = "akostya")
+    @TestLabel(name = "feature", value = {"mobile", "regression"})
+    public void verifyLoginPage (){
+        WelcomePageBase welcomePageBase = initPage(getDriver(), WelcomePageBase.class);
+        Assert.assertTrue(welcomePageBase.isPageOpened(), "Welcome page is not opened");
+        LoginPageBase loginPageBase = welcomePageBase.clickNextBtn();
+        Assert.assertTrue(loginPageBase.verifyFieldsArePresent(), "Some fields is not present");
+        Assert.assertFalse(loginPageBase.isLoginBtnActive(), "Login is active before input fields");
+        String text = "Test user";
+        loginPageBase.typeName(text);
+        loginPageBase.typePassword(R.TESTDATA.get("pass"));
+        loginPageBase.selectMaleSex();
+        Assert.assertTrue(loginPageBase.isSexSelected());
+        Assert.assertFalse(loginPageBase.isLoginBtnActive(), "Login is active before input fields");
+        loginPageBase.checkPrivacyPolicyCheckbox();
+        CarinaDescriptionPageBase carinaDescriptionPageBase=loginPageBase.clickLoginBtn();
+        Assert.assertTrue(carinaDescriptionPageBase.isPageOpened(), "Carina description page is not opened");
+    }
+
 
 }
