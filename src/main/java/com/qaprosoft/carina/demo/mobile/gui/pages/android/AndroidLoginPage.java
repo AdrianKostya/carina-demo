@@ -103,13 +103,12 @@ public class AndroidLoginPage extends LoginPageBase implements IMobileUtils {
         return femaleRadioBtn.isElementPresent();
     }
 
-    public boolean isMaleSexSelected() {
+    public boolean isMaleGenderSelected() {
         return maleRadioBtn.isChecked();
     }
 
-    public boolean isFemaleSexSelected() {
+    public boolean isFemaleGenderSelected() {
         return (femaleRadioBtn.isChecked());
     }
-
 
 }

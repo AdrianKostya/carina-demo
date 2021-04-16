@@ -32,13 +32,10 @@ public abstract class LoginPageBase extends AbstractPage {
 
 	public abstract boolean isFemaleRadioBtnArePresent();
 
+	public abstract boolean isMaleGenderSelected();
 
-	public abstract boolean isMaleSexSelected();
-
-	public abstract boolean isFemaleSexSelected();
+	public abstract boolean isFemaleGenderSelected();
 
 	public abstract String getPassword();
-
-
 
 }

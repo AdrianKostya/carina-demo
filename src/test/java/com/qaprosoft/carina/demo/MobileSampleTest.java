@@ -57,7 +57,7 @@ public class MobileSampleTest extends AbstractTest implements IMobileUtils {
         hideKeyboard();
         contactUsPage.submit();
         Assert.assertTrue(contactUsPage.isSuccessMessagePresent() || contactUsPage.isRecaptchaPresent(),
-                "message was not sent or captcha was not displayed");
+        "message was not sent or captcha was not displayed");
     }
 
     @Test(description = "JIRA#DEMO-0011")
@@ -106,7 +106,7 @@ public class MobileSampleTest extends AbstractTest implements IMobileUtils {
         loginPageBase.typePassword(password);
         softAssert.assertEquals(loginPageBase.getPassword(), password, "Password is different");
         loginPageBase.selectMaleSex();
-        softAssert.assertTrue(loginPageBase.isMaleSexSelected(), "Male sex is not selected");
+        softAssert.assertTrue(loginPageBase.isMaleGenderSelected(), "Male sex is not selected");
         softAssert.assertFalse(loginPageBase.isLoginBtnActive(), "Login is active before input fields");
         loginPageBase.checkPrivacyPolicyCheckbox();
         CarinaDescriptionPageBase carinaDescriptionPageBase = loginPageBase.clickLoginBtn();
@@ -130,6 +130,5 @@ public class MobileSampleTest extends AbstractTest implements IMobileUtils {
         Assert.assertTrue(carinaDescriptionPage.isPageOpened(), "Carina description page is not opened");
         softAssert.assertAll();
     }
-
 
 }

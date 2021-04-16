@@ -39,7 +39,7 @@ public class AndroidCarinaDescriptionPage extends CarinaDescriptionPageBase {
         super(driver);
     }
 
-    public void clickOnBurgerBtn() {
+    public void clickOnHamburgerMenu() {
         leftMenuButton.click();
     }
 

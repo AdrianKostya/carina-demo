@@ -26,13 +26,8 @@ public class MapsPageBase extends AbstractPage {
         return zoomOut.isElementPresent();
     }
 
-    public boolean isZoomInAboveZoomOut (){
-        int zoomIn1 =zoomIn.getLocation().getY();
-       int zoomOut1 = zoomOut.getLocation().getY();
-        if(zoomIn1<zoomOut1){
-            return true;
-        }
-       return false;
+    public boolean isZoomInAboveZoomOut () {
+        return (zoomIn.getLocation().getY()) < (zoomOut.getLocation().getY());
     }
 
 }

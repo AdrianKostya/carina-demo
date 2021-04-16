@@ -1,10 +1,10 @@
 package com.qaprosoft.carina.demo.mobile.gui.pages.ios;
 
-import com.qaprosoft.carina.demo.constant.ProjectConstant;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.qaprosoft.carina.demo.constant.ProjectConstant;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType.Type;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
@@ -12,7 +12,6 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.Clas
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.annotations.Predicate;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.CarinaDescriptionPageBase;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.LoginPageBase;
-import com.qaprosoft.carina.demo.constant.ProjectConstant;
 
 @DeviceType(pageType = Type.IOS_PHONE, parentClass = LoginPageBase.class)
 public class IOSLoginPage extends LoginPageBase {
@@ -110,12 +109,11 @@ public class IOSLoginPage extends LoginPageBase {
 		throw new UnsupportedOperationException(ProjectConstant.UNIMPLEMENTED_FOR_IOS);
 	}
 
-
-	public boolean isMaleSexSelected(){
+	public boolean isMaleGenderSelected(){
 		throw new UnsupportedOperationException(ProjectConstant.UNIMPLEMENTED_FOR_IOS);
 	}
 
-	public boolean isFemaleSexSelected(){
+	public boolean isFemaleGenderSelected(){
 		throw new UnsupportedOperationException(ProjectConstant.UNIMPLEMENTED_FOR_IOS);
 	}
 
