@@ -1,6 +1,5 @@
 package com.qaprosoft.carina.demo.mobile.gui.pages.common;
 
-import com.qaprosoft.carina.core.foundation.utils.R;
 import org.openqa.selenium.WebDriver;
 
 import com.qaprosoft.carina.core.gui.AbstractPage;

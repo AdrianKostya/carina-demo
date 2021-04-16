@@ -1,6 +1,5 @@
 package com.qaprosoft.carina.demo.mobile.gui.pages.ios;
 
-import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.demo.constant.ProjectConstant;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;

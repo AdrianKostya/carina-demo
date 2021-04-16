@@ -1,6 +1,5 @@
 package com.qaprosoft.carina.demo.mobile.gui.pages.android;
 
-import com.qaprosoft.carina.core.foundation.utils.R;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -43,13 +42,14 @@ public class AndroidLoginPage extends LoginPageBase implements IMobileUtils {
         hideKeyboard();
     }
 
-    public String getName (){
+    public String getName() {
         return nameInputField.getText();
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return passwordInputField.getText();
     }
+
     @Override
     public void typePassword(String password) {
         passwordInputField.type(password);
@@ -87,51 +87,28 @@ public class AndroidLoginPage extends LoginPageBase implements IMobileUtils {
         return clickLoginBtn();
     }
 
-
     public boolean isNameInputFieldArePresent() {
-        if (nameInputField.isElementPresent()){
-            return true;
-        }
-        return false;
+        return nameInputField.isElementPresent();
     }
 
     public boolean isPasswordInputFieldArePresent() {
-        if (passwordInputField.isElementPresent()){
-            return true;
-        }
-        return false;
+        return passwordInputField.isElementPresent();
     }
 
     public boolean isMaleRadioBtnArePresent() {
-        if (maleRadioBtn.isElementPresent()){
-            return true;
-        }
-        return false;
+        return maleRadioBtn.isElementPresent();
     }
-
-
 
     public boolean isFemaleRadioBtnArePresent() {
-        if (femaleRadioBtn.isElementPresent()){
-            return true;
-        }
-        return false;
+        return femaleRadioBtn.isElementPresent();
     }
 
-
-
-    public boolean isMaleSexSelected(){
-        if(maleRadioBtn.isChecked()){
-            return true;
-        }
-        return false;
+    public boolean isMaleSexSelected() {
+        return maleRadioBtn.isChecked();
     }
 
-    public boolean isFemaleSexSelected(){
-        if(femaleRadioBtn.isChecked()){
-            return true;
-        }
-        return false;
+    public boolean isFemaleSexSelected() {
+        return (femaleRadioBtn.isChecked());
     }
 
 
