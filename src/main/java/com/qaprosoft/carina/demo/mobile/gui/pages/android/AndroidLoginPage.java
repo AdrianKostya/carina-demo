@@ -12,7 +12,7 @@ import com.qaprosoft.carina.demo.mobile.gui.pages.common.CarinaDescriptionPageBa
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.LoginPageBase;
 
 @DeviceType(pageType = Type.ANDROID_PHONE, parentClass = LoginPageBase.class)
-public class LoginPage extends LoginPageBase implements IMobileUtils {
+public class AndroidLoginPage extends LoginPageBase implements IMobileUtils {
 
     @FindBy(id = "name")
     private ExtendedWebElement nameInputField;
@@ -32,7 +32,7 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
     @FindBy(id = "login_button")
     private ExtendedWebElement loginBtn;
 
-    public LoginPage(WebDriver driver) {
+    public AndroidLoginPage(WebDriver driver) {
         super(driver);
     }
 
@@ -40,6 +40,14 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
     public void typeName(String name) {
         nameInputField.type(name);
         hideKeyboard();
+    }
+
+    public String getName() {
+        return nameInputField.getText();
+    }
+
+    public String getPassword() {
+        return passwordInputField.getText();
     }
 
     @Override
@@ -77,6 +85,30 @@ public class LoginPage extends LoginPageBase implements IMobileUtils {
         selectMaleSex();
         checkPrivacyPolicyCheckbox();
         return clickLoginBtn();
+    }
+
+    public boolean isNameInputFieldArePresent() {
+        return nameInputField.isElementPresent();
+    }
+
+    public boolean isPasswordInputFieldArePresent() {
+        return passwordInputField.isElementPresent();
+    }
+
+    public boolean isMaleRadioBtnArePresent() {
+        return maleRadioBtn.isElementPresent();
+    }
+
+    public boolean isFemaleRadioBtnArePresent() {
+        return femaleRadioBtn.isElementPresent();
+    }
+
+    public boolean isMaleGenderSelected() {
+        return maleRadioBtn.isChecked();
+    }
+
+    public boolean isFemaleGenderSelected() {
+        return (femaleRadioBtn.isChecked());
     }
 
 }
