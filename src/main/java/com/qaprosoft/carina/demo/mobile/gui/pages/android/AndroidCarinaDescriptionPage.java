@@ -15,6 +15,7 @@ public class AndroidCarinaDescriptionPage extends CarinaDescriptionPageBase {
     private ExtendedWebElement webViewContent;
 
     @FindBy(xpath = "//android.view.View[@text = 'CARINA facts']")
+
     private ExtendedWebElement carinaFactsSubTitle;
 
     @FindBy(xpath = "//android.widget.CheckedTextView[@text = 'Web View']")
