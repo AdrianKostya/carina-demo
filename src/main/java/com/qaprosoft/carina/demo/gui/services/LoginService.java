@@ -1,15 +1,14 @@
 package com.qaprosoft.carina.demo.gui.services;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
+import org.testng.asserts.SoftAssert;
+
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.components.HeaderGSM;
 import com.qaprosoft.carina.demo.gui.components.LoginForm;
-import com.qaprosoft.carina.demo.gui.components.UserGSM;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
-import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
-import org.testng.asserts.SoftAssert;
 
 public class LoginService extends AbstractPage {
 

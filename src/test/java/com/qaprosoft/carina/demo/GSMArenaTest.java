@@ -1,18 +1,22 @@
 package com.qaprosoft.carina.demo;
 
-import com.qaprosoft.carina.core.foundation.AbstractTest;
-import com.qaprosoft.carina.demo.gui.components.HeaderGSM;
-import com.qaprosoft.carina.demo.gui.components.LoginForm;
-import com.qaprosoft.carina.demo.gui.components.UserGSM;
-import com.qaprosoft.carina.demo.gui.pages.HomePage;
-import com.qaprosoft.carina.demo.gui.pages.LoginPage;
-import com.qaprosoft.carina.demo.gui.services.LoginService;
-import com.qaprosoft.carina.demo.gui.services.UserService;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.qaprosoft.carina.core.foundation.AbstractTest;
+import com.qaprosoft.carina.demo.gui.components.HeaderGSM;
+import com.qaprosoft.carina.demo.gui.components.LoginForm;
+import com.qaprosoft.carina.demo.gui.components.UserGSM;
+import com.qaprosoft.carina.demo.gui.pages.ArticlePage;
+import com.qaprosoft.carina.demo.gui.pages.HomePage;
+import com.qaprosoft.carina.demo.gui.pages.LoginPage;
+import com.qaprosoft.carina.demo.gui.pages.NewsPage;
+import com.qaprosoft.carina.demo.gui.services.LoginService;
+import com.qaprosoft.carina.demo.gui.services.UserService;
+
 public class GSMArenaTest extends AbstractTest {
+
     @Test
     public void VerifyHeaderComponents(){
         SoftAssert softAssert = new SoftAssert();
@@ -62,6 +66,36 @@ public class GSMArenaTest extends AbstractTest {
         LoginForm loginForm= homePage.getHeaderGSM().openLoginForm();
         LoginPage loginPage = loginForm.login(userGSM.getEmail(), "asdfasd");
         Assert.assertTrue(loginPage.isWrongPasswordTitlePresent(),"Wrong password title is not present");
+    }
+
+    @Test
+    public void verifyArticleName(){
+        LoginService loginService = new LoginService(getDriver());
+        UserService userService = new UserService();
+        UserGSM userGSM = userService.getUser();
+        loginService.login(userGSM.getEmail(), userGSM.getPassword());
+        HomePage homePage = new HomePage(getDriver());
+        NewsPage newsPage = homePage.getFooterMenu().openNewsPage();
+        Assert.assertTrue(newsPage.isPageOpened());
+        String newsItemTitle = newsPage.getNewsItem().readTitleByIndex(1);
+        newsPage.getNewsItem().clickOnItem();
+        ArticlePage articlePage = new ArticlePage(getDriver());
+        String articleTitle = articlePage.getArticleTitle();
+        Assert.assertEquals(newsItemTitle, articleTitle, "Titles is not the same");
+    }
+
+    @Test
+    public void verifySearchingProcess(){
+        LoginService loginService = new LoginService(getDriver());
+        UserService userService = new UserService();
+        UserGSM userGSM = userService.getUser();
+        HomePage homePage= loginService.login(userGSM.getEmail(), userGSM.getPassword());
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
+        NewsPage newsPage = homePage.getFooterMenu().openNewsPage();
+        Assert.assertTrue(newsPage.isPageOpened());
+        String itemName = "Samsung";
+        newsPage.searchItem(itemName);
+        Assert.assertTrue(newsPage.getNewsItem().isAllItemsHaveSearchedWord(itemName));
     }
 
 }

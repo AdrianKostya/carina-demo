@@ -1,11 +1,12 @@
 package com.qaprosoft.carina.demo.gui.components;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.qaprosoft.carina.core.gui.AbstractUIObject;
+
 
 import java.util.List;
 
@@ -14,9 +15,6 @@ public class HeaderGSM extends AbstractUIObject {
     public HeaderGSM(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
-
-    @FindBy(id = "footmenu")
-    private FooterMenu footerMenu;
 
     @FindBy(xpath = "//div[contains(@class, 'brandmenu-v2')]//a")
     private List<ExtendedWebElement> brandLinks;
@@ -42,7 +40,7 @@ public class HeaderGSM extends AbstractUIObject {
     @FindBy(xpath = "//a[@href=\"https://www.instagram.com/gsmarenateam/\"]/child::i")
     private ExtendedWebElement instagramIcon;
 
-    @ FindBy(xpath = "//a[@href=\"https://www.youtube.com/channel/UCbLq9tsbo8peV22VxbDAfXA?sub_confirmation=1\"]/child::i")
+    @FindBy(xpath = "//a[@href=\"https://www.youtube.com/channel/UCbLq9tsbo8peV22VxbDAfXA?sub_confirmation=1\"]/child::i")
     private ExtendedWebElement youtubeIcon;
 
     @FindBy(xpath = "//a[@href=\"rss-news-reviews.php3\"]/child::i")

@@ -12,5 +12,4 @@ public class AndroidChartsPage extends ChartsPageBase {
         super(driver);
     }
 
-
 }

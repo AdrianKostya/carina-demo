@@ -18,16 +18,14 @@ package com.qaprosoft.carina.demo.gui.pages;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
 
-
-import com.qaprosoft.carina.core.foundation.utils.Configuration;
-import com.qaprosoft.carina.core.foundation.utils.R;
-import com.qaprosoft.carina.demo.gui.components.HeaderGSM;
-import com.qaprosoft.carina.demo.gui.components.LoginForm;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.qaprosoft.carina.core.foundation.utils.Configuration;
+import com.qaprosoft.carina.core.foundation.utils.R;
+import com.qaprosoft.carina.demo.gui.components.HeaderGSM;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.components.FooterMenu;
@@ -70,7 +68,7 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//a[@href=\"https://www.instagram.com/gsmarenateam/\"]/child::i")
     private ExtendedWebElement instagramIcon;
 
-    @ FindBy(xpath = "//a[@href=\"https://www.youtube.com/channel/UCbLq9tsbo8peV22VxbDAfXA?sub_confirmation=1\"]/child::i")
+    @FindBy(xpath = "//a[@href=\"https://www.youtube.com/channel/UCbLq9tsbo8peV22VxbDAfXA?sub_confirmation=1\"]/child::i")
     private ExtendedWebElement youtubeIcon;
 
     @FindBy(xpath = "//a[@href=\"rss-news-reviews.php3\"]/child::i")
@@ -81,8 +79,6 @@ public class HomePage extends AbstractPage {
 
     @FindBy(xpath = "//a[@href=\"register.php3\"]")
     private ExtendedWebElement registerBtn;
-
-
 
     public HomePage(WebDriver driver) {
         super(driver);

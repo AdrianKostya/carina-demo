@@ -1,7 +1,5 @@
 package com.qaprosoft.carina.demo.gui.components;
 
-import org.openqa.selenium.WebDriver;
-
 public class UserGSM {
     private String nickname;
     private String email ;

@@ -113,5 +113,4 @@ public class DBSampleTest extends AbstractTest {
 		assertEquals(userPreference.getUserId(), USER_PREFERENCE.getUserId(), "Preference user id must match");
 	}
 
-
 }

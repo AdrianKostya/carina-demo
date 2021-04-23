@@ -1,13 +1,16 @@
 package com.qaprosoft.carina.demo.gui.components;
 
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.demo.gui.pages.HomePage;
-import com.qaprosoft.carina.demo.gui.pages.LoginPage;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.qaprosoft.carina.core.gui.AbstractPage;
+import com.qaprosoft.carina.demo.gui.pages.LoginPage;
+
+
 public class LoginForm extends AbstractPage {
+    private static final Logger LOGGER = Logger.getLogger(LoginForm.class);
 
     @FindBy(id = "email")
     private ExtendedWebElement emailField;
@@ -16,7 +19,7 @@ public class LoginForm extends AbstractPage {
     private ExtendedWebElement passwordField;
 
     @FindBy(id = "nick-submit")
-    private ExtendedWebElement loginBtnSubmit;
+    private ExtendedWebElement submitBtn;
 
     @FindBy(className = "forgot")
     private ExtendedWebElement forgotBtn;
@@ -29,18 +32,20 @@ public class LoginForm extends AbstractPage {
         return emailField.isElementPresent();
    }
 
-   public void inputEmail(String email){
+   public void typeEmail(String email){
         emailField.type(email);
    }
 
-   public void inputPassword(String password){
+   public void typePassword(String password){
         passwordField.type(password);
    }
 
    public LoginPage login(String email, String password){
-        inputEmail(email);
-        inputPassword(password);
-        loginBtnSubmit.click();
+       typeEmail(email);
+        LOGGER.info("email is inputted");
+       typePassword(password);
+        LOGGER.info("password is inputted");
+        submitBtn.click();
         return new LoginPage(getDriver());
    }
 
