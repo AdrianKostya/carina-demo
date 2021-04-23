@@ -1,5 +1,9 @@
 package com.qaprosoft.carina.demo;
 
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
+import com.qaprosoft.carina.demo.gui.components.NewsItem;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.util.StringUtil;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -14,6 +18,8 @@ import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 import com.qaprosoft.carina.demo.gui.pages.NewsPage;
 import com.qaprosoft.carina.demo.gui.services.LoginService;
 import com.qaprosoft.carina.demo.gui.services.UserService;
+
+import java.util.List;
 
 public class GSMArenaTest extends AbstractTest {
 
@@ -77,11 +83,9 @@ public class GSMArenaTest extends AbstractTest {
         HomePage homePage = new HomePage(getDriver());
         NewsPage newsPage = homePage.getFooterMenu().openNewsPage();
         Assert.assertTrue(newsPage.isPageOpened());
-        String newsItemTitle = newsPage.getNewsItem().readTitleByIndex(1);
-        newsPage.getNewsItem().clickOnItem();
-        ArticlePage articlePage = new ArticlePage(getDriver());
-        String articleTitle = articlePage.getArticleTitle();
-        Assert.assertEquals(newsItemTitle, articleTitle, "Titles is not the same");
+        String newsItemTitle = newsPage.getNewsItem(0).getTitle();
+        ArticlePage articlePage = newsPage.getNewsItem(0).clickOnItem();
+        Assert.assertEquals(newsItemTitle, articlePage.getArticleTitle(), "Titles is not the same");
     }
 
     @Test
@@ -93,9 +97,12 @@ public class GSMArenaTest extends AbstractTest {
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         NewsPage newsPage = homePage.getFooterMenu().openNewsPage();
         Assert.assertTrue(newsPage.isPageOpened());
-        String itemName = "Samsung";
-        newsPage.searchItem(itemName);
-        Assert.assertTrue(newsPage.getNewsItem().isAllItemsHaveSearchedWord(itemName));
+        String itemName = "iphone";
+        List<NewsItem> newsItems= newsPage.searchNews(itemName);
+        for (NewsItem news:newsItems){
+            System.out.println("String NEWS: "+news.readTitle());
+            Assert.assertTrue(StringUtils.containsIgnoreCase(news.readTitle(),  itemName), "titles not the same");
+        }
     }
 
 }

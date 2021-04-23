@@ -57,7 +57,7 @@ public class WebMultipleBrowserTest extends AbstractTest {
         Assert.assertFalse(CollectionUtils.isEmpty(news), "News not found!");
 
         for(NewsItem n : news) {
-            System.out.println(n.readTitle());
+            System.out.println("Title is :"+ n.readTitle());
             Assert.assertTrue(StringUtils.containsIgnoreCase(n.readTitle(), searchQ), "Invalid search results!");
         }
 

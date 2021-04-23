@@ -36,18 +36,15 @@ public class NewsPage extends AbstractPage {
     private List<NewsItem> news;
 
     @FindBy(xpath = "//h1[@class=\"article-info-name\"]")
-    private  ExtendedWebElement newsTitle;
-
-    @FindBy(className = "floating-title")
-    private NewsItem newsItem;
+    private  ExtendedWebElement newsGlobalTitle;
 
     public NewsPage(WebDriver driver) {
         super(driver);
         setPageURL("/news.php3");
     }
 
-    public NewsItem getNewsItem(){
-        return newsItem;
+    public NewsItem getNewsItem(int index){
+        return  news.get(index);
     }
 
     public List<NewsItem> searchNews(String q) {
@@ -57,13 +54,7 @@ public class NewsPage extends AbstractPage {
     }
 
     public boolean isPageOpened(){
-        return newsTitle.isElementPresent();
+        return newsGlobalTitle.isElementPresent();
     }
-
-    public void searchItem(String text){
-        searchTextField.type(text);
-        searchButton.click();
-    }
-
 
 }

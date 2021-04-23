@@ -16,6 +16,7 @@
 package com.qaprosoft.carina.demo.gui.components;
 
 import com.qaprosoft.carina.demo.gui.pages.ArticlePage;
+import com.qaprosoft.carina.demo.gui.pages.NewsPage;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.poi.util.StringUtil;
@@ -35,38 +36,23 @@ public class NewsItem extends AbstractUIObject {
     @FindBy(xpath="./a")
     public ExtendedWebElement titleLink;
 
-    @FindBy(xpath = "//div[@class=\"news-item\"]//following::h3")
-    private List<ExtendedWebElement> newsTitleList;
+    @FindBy(xpath = "//div[@class='news-item']//following::h3")
+    private ExtendedWebElement newsTitle;
     
     public NewsItem(WebDriver driver, SearchContext sc) {
         super(driver, sc);
     }
     
     public String readTitle() {
-        return titleLink.getText();
+        return titleLink.getElement().getText();
     }
 
-    public String readTitleByIndex(int index){
-        return newsTitleList.get(index).getText();
-    }
-
-    public boolean isAllItemsHaveSearchedWord(String item) {
-        if (!newsTitleList.isEmpty()) {
-            for (ExtendedWebElement newsTitle : newsTitleList) {
-                String newsTitle1 = newsTitle.getText();
-                if (!newsTitle1.contains(item)) {
-                    LOGGER.info("News titles is not contains any"+item);
-                    return false;
-                }
-            }
-            return true;
-        }
-        LOGGER.info("News title list in EMPTY !");
-        return false;
+    public String getTitle(){
+        return newsTitle.getElement().getText();
     }
 
     public ArticlePage clickOnItem(){
-        newsTitleList.get(1).click();
+        newsTitle.click();
         return new ArticlePage(getDriver());
     }
 
