@@ -35,7 +35,7 @@ public class NewsPage extends AbstractPage {
     @FindBy(xpath="//div[@class='news-item']")
     private List<NewsItem> news;
 
-    @FindBy(xpath = "//h1[@class=\"article-info-name\"]")
+    @FindBy(xpath = "//h1[@class='article-info-name']")
     private  ExtendedWebElement newsGlobalTitle;
 
     public NewsPage(WebDriver driver) {

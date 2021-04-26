@@ -8,7 +8,6 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 
-
 public class LoginForm extends AbstractPage {
     private static final Logger LOGGER = Logger.getLogger(LoginForm.class);
 

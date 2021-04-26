@@ -32,7 +32,7 @@ public class FooterMenu extends AbstractUIObject {
     @FindBy(xpath = "//div[@class='footer-inner']//a[contains(text(),'Compare')]")
     private ExtendedWebElement compareLink;
     
-    @FindBy(xpath = "//a[@href=\"news.php3\" and contains(text(), \"News\")]")
+    @FindBy(xpath = "//a[@href='news.php3' and contains(text(), 'News')]")
     private ExtendedWebElement newsLink;
 
     public FooterMenu(WebDriver driver, SearchContext searchContext) {

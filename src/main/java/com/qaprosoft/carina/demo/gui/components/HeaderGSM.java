@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 
-
 import java.util.List;
 
 public class HeaderGSM extends AbstractUIObject {
@@ -22,40 +21,40 @@ public class HeaderGSM extends AbstractUIObject {
     @FindBy(className = "news-column-index")
     private ExtendedWebElement newsColumn;
 
-    @FindBy (xpath = "//button[@type=\"button\" and contains(@role,\"button\")]")
+    @FindBy (xpath = "//button[@type='button' and contains(@role,'button')]")
     private ExtendedWebElement hamburgerMenuBtn;
 
-    @FindBy (xpath ="//input[@type=\"text\" and contains (@placeholder,\"Search\")]")
+    @FindBy (xpath ="//input[@type='text' and contains (@placeholder,'Search')]")
     private ExtendedWebElement searchField;
 
     @FindBy(xpath = "//a[@href='tipus.php3' and contains (@class,'tip-icon')]")
     private ExtendedWebElement tipUs;
 
-    @FindBy(xpath = "//a[@href=\"https://www.facebook.com/GSMArenacom-189627474421/\"]/child::i")
+    @FindBy(xpath = "//a[@href='https://www.facebook.com/GSMArenacom-189627474421/']/child::i")
     private ExtendedWebElement facebookIcon;
 
-    @FindBy(xpath = "//a[@href=\"https://twitter.com/gsmarena_com\"]/child::i")
+    @FindBy(xpath = "//a[@href='https://twitter.com/gsmarena_com']/child::i")
     private ExtendedWebElement twitterIcon;
 
-    @FindBy(xpath = "//a[@href=\"https://www.instagram.com/gsmarenateam/\"]/child::i")
+    @FindBy(xpath = "//a[@href='https://www.instagram.com/gsmarenateam/']/child::i")
     private ExtendedWebElement instagramIcon;
 
-    @FindBy(xpath = "//a[@href=\"https://www.youtube.com/channel/UCbLq9tsbo8peV22VxbDAfXA?sub_confirmation=1\"]/child::i")
+    @FindBy(xpath = "//a[@href='https://www.youtube.com/channel/UCbLq9tsbo8peV22VxbDAfXA?sub_confirmation=1']/child::i")
     private ExtendedWebElement youtubeIcon;
 
-    @FindBy(xpath = "//a[@href=\"rss-news-reviews.php3\"]/child::i")
+    @FindBy(xpath = "//a[@href='rss-news-reviews.php3']/child::i")
     private ExtendedWebElement newsIcon;
 
-    @FindBy(xpath = "//a[@href=\"#\"and contains(@class, \"login-icon\")]")
+    @FindBy(xpath = "//a[@href='#'and contains(@class, 'login-icon')]")
     private ExtendedWebElement loginIcon;
 
-    @FindBy(xpath = "//a[@href=\"register.php3\"]")
+    @FindBy(xpath = "//a[@href='register.php3']")
     private ExtendedWebElement registerBtn;
 
-    @FindBy (xpath = "//span[@class=\"icon-count\" and contains (text(), \"Log out\")]")
+    @FindBy (xpath = "//span[@class='icon-count' and contains (text(), 'Log out')]")
     private ExtendedWebElement logOutBtn;
 
-    @FindBy(xpath = "//*[@id=\"login-active\"]//following::span")
+    @FindBy(xpath = "//*[@id='login-active']//following::span")
     private ExtendedWebElement userBtn;
 
 
@@ -72,15 +71,15 @@ public class HeaderGSM extends AbstractUIObject {
     }
 
     public boolean isTipUsIconPresent(){
-        return tipUs.isPresent();
+        return tipUs.isElementPresent();
     }
 
     public boolean isFacebookIconPresent(){
-        return facebookIcon.isPresent();
+        return facebookIcon.isElementPresent();
     }
 
     public boolean isTwitterIconPresent(){
-        return twitterIcon.isPresent();
+        return twitterIcon.isElementPresent();
     }
 
     public boolean isInstagramIconPresent(){
@@ -88,19 +87,19 @@ public class HeaderGSM extends AbstractUIObject {
     }
 
     public boolean isYoutubeIconPresent(){
-        return youtubeIcon.isPresent();
+        return youtubeIcon.isElementPresent();
     }
 
     public boolean isNewsIconPresent(){
-        return newsIcon.isPresent();
+        return newsIcon.isElementPresent();
     }
 
     public boolean isLoginIconPresent(){
-        return loginIcon.isPresent();
+        return loginIcon.isElementPresent();
     }
 
     public boolean isRegisterBtnPresent(){
-        return registerBtn.isPresent();
+        return registerBtn.isElementPresent();
     }
 
     public boolean isUserBtnPresent(){
@@ -115,4 +114,5 @@ public class HeaderGSM extends AbstractUIObject {
         loginIcon.click();
         return new LoginForm(getDriver());
     }
+
 }

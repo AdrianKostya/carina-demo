@@ -15,20 +15,14 @@
  */
 package com.qaprosoft.carina.demo.gui.components;
 
-import com.qaprosoft.carina.demo.gui.pages.ArticlePage;
-import com.qaprosoft.carina.demo.gui.pages.NewsPage;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
-import org.apache.poi.util.StringUtil;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.qaprosoft.carina.demo.gui.pages.ArticlePage;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import org.testng.Assert;
-
-import java.util.List;
 
 public class NewsItem extends AbstractUIObject {
     public static final Logger LOGGER = Logger.getLogger(NewsItem.class);
@@ -36,8 +30,8 @@ public class NewsItem extends AbstractUIObject {
     @FindBy(xpath="./a")
     public ExtendedWebElement titleLink;
 
-    @FindBy(xpath = "//div[@class='news-item']//following::h3")
-    private ExtendedWebElement newsTitle;
+    @FindBy(xpath = "//div[@class='news-item']//h3")
+    public ExtendedWebElement newsTitle;
     
     public NewsItem(WebDriver driver, SearchContext sc) {
         super(driver, sc);
@@ -55,6 +49,5 @@ public class NewsItem extends AbstractUIObject {
         newsTitle.click();
         return new ArticlePage(getDriver());
     }
-
 
 }

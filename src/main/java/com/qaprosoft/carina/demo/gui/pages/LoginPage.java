@@ -8,10 +8,10 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 
 public class LoginPage extends AbstractPage {
 
-    @FindBy(xpath = "//p[contains(text(), \"Reason: User record not found.\")]")
+    @FindBy(xpath = "//p[contains(text(), 'Reason: User record not found.')]")
     private ExtendedWebElement loginFailed;
 
-    @FindBy(xpath = "//p[contains(text(), \"Reason: Wrong password.\")]")
+    @FindBy(xpath = "//p[contains(text(), 'Reason: Wrong password.')]")
     private ExtendedWebElement wrongPassword;
 
     public LoginPage(WebDriver driver) {

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 public class ArticlePage extends AbstractPage {
     private final static Logger LOGGER = Logger.getLogger(ArticlePage.class);
 
-    @FindBy(xpath = "//h1[@class=\"article-info-name\"]")
+    @FindBy(xpath = "//h1[@class='article-info-name']")
     private ExtendedWebElement titleItem;
 
     public ArticlePage(WebDriver driver) {

@@ -1,5 +1,6 @@
 package com.qaprosoft.carina.demo;
 
+import com.qaprosoft.carina.core.foundation.crypto.CryptoConsole;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.demo.gui.components.NewsItem;
 import org.apache.commons.lang3.StringUtils;
