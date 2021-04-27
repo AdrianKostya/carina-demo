@@ -15,13 +15,11 @@
  */
 package com.qaprosoft.carina.demo.gui.pages;
 
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-import org.slf4j.LoggerFactory;
 
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
 import com.qaprosoft.carina.core.foundation.utils.R;
@@ -34,7 +32,7 @@ import com.qaprosoft.carina.demo.gui.components.WeValuePrivacyAd;
 
 public class HomePage extends AbstractPage {
     private final static org.apache.log4j.Logger LOGGER = Logger.getLogger(HomePage.class);
-    
+
     @FindBy(xpath ="//h4[contains(text(), 'Top 10 by daily interest')]")
     private ExtendedWebElement top10Text;
 

@@ -17,11 +17,10 @@ package com.qaprosoft.carina.demo;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNull;
-
-import com.qaprosoft.carina.demo.gui.pages.HomePage;
-import com.zebrunner.agent.core.annotation.TestLabel;
 import org.apache.ibatis.session.SqlSession;
 import org.testng.annotations.Test;
+
+import com.zebrunner.agent.core.annotation.TestLabel;
 import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.demo.db.mappers.UserMapper;
 import com.qaprosoft.carina.demo.db.mappers.UserPreferenceMapper;
@@ -29,7 +28,6 @@ import com.qaprosoft.carina.demo.db.models.User;
 import com.qaprosoft.carina.demo.db.models.User.Status;
 import com.qaprosoft.carina.demo.utils.ConnectionFactory;
 import com.qaprosoft.carina.demo.db.models.UserPreference;
-import org.testng.asserts.SoftAssert;
 
 /**
  * This sample shows how create DB test.
