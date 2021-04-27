@@ -1,13 +1,14 @@
 package com.qaprosoft.carina.demo.gui.components;
 
+import java.util.List;
+
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-
-import java.util.List;
+import org.testng.asserts.SoftAssert;
 
 public class HeaderGSM extends AbstractUIObject {
 
@@ -56,7 +57,6 @@ public class HeaderGSM extends AbstractUIObject {
 
     @FindBy(xpath = "//*[@id='login-active']//following::span")
     private ExtendedWebElement userBtn;
-
 
     public HeaderGSM(WebDriver driver) {
         super(driver);
@@ -108,6 +108,19 @@ public class HeaderGSM extends AbstractUIObject {
 
     public boolean isLogOutBtnPresent(){
         return logOutBtn.isElementPresent();
+    }
+
+    public void validateHeaderGsmElements(SoftAssert softAssert){
+        softAssert.assertTrue(isHamburgerMenuPresent(), "Hamburger menu is not present");
+        softAssert.assertTrue(isSearchFieldPresent(), "Search field is not present");
+        softAssert.assertTrue(isTipUsIconPresent(),"Tip us icon is not present");
+        softAssert.assertTrue(isFacebookIconPresent(), "Facebook icon is not present");
+        softAssert.assertTrue(isTwitterIconPresent(), "Twitter icon is not present");
+        softAssert.assertTrue(isInstagramIconPresent(), "Instagram icon is not present");
+        softAssert.assertTrue(isYoutubeIconPresent(), "Youtube icon is not present");
+        softAssert.assertTrue(isNewsIconPresent(), "News icon is not present");
+        softAssert.assertTrue(isLoginIconPresent(), "Login icon is not present");
+        softAssert.assertTrue(isRegisterBtnPresent(), "Register btn is not present");
     }
 
     public LoginForm openLoginForm(){

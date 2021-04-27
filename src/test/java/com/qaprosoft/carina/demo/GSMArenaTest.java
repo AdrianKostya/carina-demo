@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import com.qaprosoft.carina.demo.gui.pages.ArticlePage;
-import com.qaprosoft.carina.demo.gui.pages.GlossaryPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.LoginPage;
 import com.qaprosoft.carina.demo.gui.pages.NewsPage;
@@ -28,16 +27,7 @@ public class GSMArenaTest extends AbstractTest {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         HeaderGSM headerGSM = new HeaderGSM(getDriver());
-        softAssert.assertTrue(headerGSM.isHamburgerMenuPresent(), "Hamburger menu is not present");
-        softAssert.assertTrue(headerGSM.isSearchFieldPresent(), "Search field is not present");
-        softAssert.assertTrue(headerGSM.isTipUsIconPresent(),"Tip us icon is not present");
-        softAssert.assertTrue(headerGSM.isFacebookIconPresent(), "Facebook icon is not present");
-        softAssert.assertTrue(headerGSM.isTwitterIconPresent(), "Twitter icon is not present");
-        softAssert.assertTrue(headerGSM.isInstagramIconPresent(), "Instagram icon is not present");
-        softAssert.assertTrue(headerGSM.isYoutubeIconPresent(), "Youtube icon is not present");
-        softAssert.assertTrue(headerGSM.isNewsIconPresent(), "News icon is not present");
-        softAssert.assertTrue(headerGSM.isLoginIconPresent(), "Login icon is not present");
-        softAssert.assertTrue(headerGSM.isRegisterBtnPresent(), "Register btn is not present");
+        headerGSM.validateHeaderGsmElements(softAssert);
         softAssert.assertAll();
     }
 
@@ -103,5 +93,5 @@ public class GSMArenaTest extends AbstractTest {
             Assert.assertTrue(StringUtils.containsIgnoreCase(news.readTitle(),  itemName), "titles not the same");
         }
     }
-    
+
 }
