@@ -17,10 +17,10 @@ package com.qaprosoft.carina.demo;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNull;
-
-import com.zebrunner.agent.core.annotation.TestLabel;
 import org.apache.ibatis.session.SqlSession;
 import org.testng.annotations.Test;
+
+import com.zebrunner.agent.core.annotation.TestLabel;
 import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.demo.db.mappers.UserMapper;
 import com.qaprosoft.carina.demo.db.mappers.UserPreferenceMapper;
@@ -110,4 +110,5 @@ public class DBSampleTest extends AbstractTest {
 		assertEquals(userPreference.getValue(), USER_PREFERENCE.getValue(), "Preference value must match");
 		assertEquals(userPreference.getUserId(), USER_PREFERENCE.getUserId(), "Preference user id must match");
 	}
+
 }

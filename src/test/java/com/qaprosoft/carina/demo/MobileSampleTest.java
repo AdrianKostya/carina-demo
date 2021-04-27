@@ -1,7 +1,6 @@
 package com.qaprosoft.carina.demo;
 
 import org.apache.commons.lang3.RandomStringUtils;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -19,8 +18,6 @@ import com.qaprosoft.carina.core.foundation.utils.mobile.IMobileUtils;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.utils.MobileContextUtils;
 import com.qaprosoft.carina.demo.utils.MobileContextUtils.View;
-
-import java.util.concurrent.TimeUnit;
 
 public class MobileSampleTest extends AbstractTest implements IMobileUtils {
 
@@ -46,8 +43,6 @@ public class MobileSampleTest extends AbstractTest implements IMobileUtils {
     @MethodOwner(owner = "qpsdemo")
     @TestLabel(name = "feature", value = {"mobile", "regression"})
     public void testWebView() {
-        ChromeDriver driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
         LoginPageBase loginPage = welcomePage.clickNextBtn();
         loginPage.login();
