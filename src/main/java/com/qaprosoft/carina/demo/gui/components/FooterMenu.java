@@ -19,6 +19,7 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.qaprosoft.carina.demo.gui.pages.GlossaryPage;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
@@ -55,6 +56,11 @@ public class FooterMenu extends AbstractUIObject {
     public NewsPage openNewsPage() {
         newsLink.click();
         return new NewsPage(driver);
+    }
+
+    public GlossaryPage openGlossaryPage(){
+        glossaryLink.click();
+        return new GlossaryPage(getDriver());
     }
 
 }

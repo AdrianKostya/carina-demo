@@ -5,10 +5,10 @@ import java.util.List;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.testng.asserts.SoftAssert;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import org.testng.asserts.SoftAssert;
 
 public class HeaderGSM extends AbstractUIObject {
 
@@ -57,6 +57,12 @@ public class HeaderGSM extends AbstractUIObject {
 
     @FindBy(xpath = "//*[@id='login-active']//following::span")
     private ExtendedWebElement userBtn;
+
+    @FindBy(xpath = "//button[@type='button']")
+    private ExtendedWebElement hamburgerMenubtn;
+
+    @FindBy (xpath = "//*[@id='menu']")
+    private HamburgerMenu hamburgerMenu;
 
     public HeaderGSM(WebDriver driver) {
         super(driver);
@@ -108,6 +114,11 @@ public class HeaderGSM extends AbstractUIObject {
 
     public boolean isLogOutBtnPresent(){
         return logOutBtn.isElementPresent();
+    }
+
+    public HamburgerMenu getHamburgerMenu(){
+        hamburgerMenuBtn.click();
+        return hamburgerMenu;
     }
 
     public void validateHeaderGsmElements(SoftAssert softAssert){
