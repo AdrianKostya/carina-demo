@@ -22,6 +22,10 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractPage;
 
 public class ModelInfoPage extends AbstractPage {
+
+    @FindBy(xpath = "//i[contains(@class,'icon-comment-count')]")
+    private ExtendedWebElement opinionBtn;
+
     @FindBy(css = ".help-display strong")
     private ExtendedWebElement displayInfoLabel;
 
@@ -57,4 +61,10 @@ public class ModelInfoPage extends AbstractPage {
         assertElementPresent(displayInfoLabel);
         return batteryInfoLabel.getText();
     }
+
+    public OpinionPage clickOpinionBtn(){
+        opinionBtn.click();
+        return new OpinionPage(getDriver());
+    }
+
 }

@@ -3,15 +3,30 @@ package com.qaprosoft.carina.demo;
 import java.util.HashMap;
 import java.util.List;
 
-import com.qaprosoft.carina.core.foundation.dataprovider.annotations.XlsDataSourceParameters;
-import com.qaprosoft.carina.demo.gui.components.*;
-import com.qaprosoft.carina.demo.gui.pages.*;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import com.qaprosoft.carina.demo.gui.components.HamburgerMenu;
+import com.qaprosoft.carina.demo.gui.components.HeaderGSM;
+import com.qaprosoft.carina.demo.gui.components.LoginForm;
+import com.qaprosoft.carina.demo.gui.components.NewsItem;
+import com.qaprosoft.carina.demo.gui.components.PhoneFinderBtn;
+import com.qaprosoft.carina.demo.gui.components.PhoneModelBlock;
+import com.qaprosoft.carina.demo.gui.components.UserGSM;
+import com.qaprosoft.carina.demo.gui.pages.ArticlePage;
+import com.qaprosoft.carina.demo.gui.pages.BrandModelsPage;
+import com.qaprosoft.carina.demo.gui.pages.GlossaryPage;
+import com.qaprosoft.carina.demo.gui.pages.HomePage;
+import com.qaprosoft.carina.demo.gui.pages.LoginPage;
+import com.qaprosoft.carina.demo.gui.pages.ModelInfoPage;
+import com.qaprosoft.carina.demo.gui.pages.NewsPage;
+import com.qaprosoft.carina.demo.gui.pages.OpinionPage;
+import com.qaprosoft.carina.demo.gui.pages.PhoneFinderPage;
+import com.qaprosoft.carina.demo.gui.pages.ResultPage;
+import com.qaprosoft.carina.core.foundation.dataprovider.annotations.XlsDataSourceParameters;
 import com.qaprosoft.carina.core.foundation.AbstractTest;
 import com.qaprosoft.carina.demo.gui.services.LoginService;
 import com.qaprosoft.carina.demo.gui.services.UserService;
@@ -146,4 +161,39 @@ public class GSMArenaTest extends AbstractTest {
         Assert.assertTrue(hamburgerMenu.openContactPage().isPageOpened(), "ContactPage is not opened");
     }
 
+    @Test
+    public void  verifyPhoneFinder(){
+        String model = "Samsung";
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+        PhoneFinderBtn phoneFinderBtn = new PhoneFinderBtn(getDriver());
+        PhoneFinderPage phoneFinderPage =phoneFinderBtn.getPhoneFinderPage();
+        String resultPhoneFinderPage = phoneFinderPage.getPhoneFinderSettings().selectBrand(model);
+        ResultPage resultPage=phoneFinderPage.getPhoneFinderSettings().getResultPage();
+        String resultPageNumber = resultPage.getResultNumber();
+        Assert.assertEquals(resultPhoneFinderPage, resultPageNumber, "Numbers is different");
+        Assert.assertTrue(resultPage.isAllModelHaveSearchedTitle(model), "Model don't have searched title");
+        resultPage.getPrevPage();
+        Assert.assertTrue(phoneFinderPage.isPageOpened());
+    }
+
+    @Test
+    public void verifyOpinionsOnPhonePage(){
+        LoginService loginService = new LoginService(getDriver());
+        UserService userService = new UserService();
+        UserGSM userGSM = userService.getUser();
+        HomePage homePage= loginService.login(userGSM.getEmail(), userGSM.getPassword());
+        PhoneModelBlock phoneModelBlock =homePage.getPhoneModelList();
+        BrandModelsPage brandModelsPage =phoneModelBlock.chosePhoneModel("Samsung");
+        brandModelsPage.getPopularityBtn();
+        ModelInfoPage modelInfoPage = brandModelsPage.getFirstElement(0);
+        OpinionPage opinionPage = modelInfoPage.clickOpinionBtn();
+        Assert.assertTrue(opinionPage.sortByBestRating().isRatingSortedByStream(), "List is not sorted by best rating");
+        Assert.assertTrue(opinionPage.sortByNewestDate().isDateSortedNewestFirst(), "List is not sorted by newestDateFirst");
+        Assert.assertTrue(opinionPage.sortByLatestDate().isDateSortedOldestFirst(),"List is not sorted by LatestDateFirst");
+        Assert.assertTrue(opinionPage.sortByBestRating().isCommentRate(0), "We cant rate");
+        Assert.assertTrue(opinionPage.sortByBestRating().isCommentUnrate(0), "We cant unrate");
+    }
+
 }
+

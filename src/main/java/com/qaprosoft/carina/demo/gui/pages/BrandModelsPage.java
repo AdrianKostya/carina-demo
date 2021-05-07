@@ -20,12 +20,23 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.components.ModelItem;
 
 public class BrandModelsPage extends AbstractPage {
+
     @FindBy(xpath = "//div[@id='review-body']//li")
     private List<ModelItem> models;
+
+    @FindBy(xpath = "//h1[@class='article-info-name']")
+    private ExtendedWebElement brandModelPageTitle;
+
+    @FindBy(xpath = "//i[contains(@class, 'head-icon icon-popularity')]")
+    private  ExtendedWebElement popularityBtn;
+
+    @FindBy(xpath = "//div[@class='makers']//following::a")
+    private ExtendedWebElement model;
 
     public BrandModelsPage(WebDriver driver) {
         super(driver);
@@ -39,4 +50,18 @@ public class BrandModelsPage extends AbstractPage {
         }
         throw new RuntimeException("Unable to open model: " + modelName);
     }
+
+    public boolean isPageOpened(){
+        return brandModelPageTitle.isElementPresent();
+    }
+
+    public void getPopularityBtn(){
+        popularityBtn.click();
+    }
+
+    public ModelInfoPage getFirstElement(int index){
+            models.get(index).openModelPage();
+        return new ModelInfoPage(getDriver());
+    }
+
 }
