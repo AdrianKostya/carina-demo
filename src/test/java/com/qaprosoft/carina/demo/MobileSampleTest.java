@@ -132,3 +132,4 @@ public class MobileSampleTest extends AbstractTest implements IMobileUtils {
     }
 
 }
+

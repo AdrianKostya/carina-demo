@@ -23,6 +23,7 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 
 public class WeValuePrivacyAd extends AbstractUIObject {
+
 	@FindBy(xpath = "//button[contains(@onclick, 'setAndSaveAllConsent')]")
 	private ExtendedWebElement okBtn;
 

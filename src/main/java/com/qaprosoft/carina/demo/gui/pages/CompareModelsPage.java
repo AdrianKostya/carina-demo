@@ -18,9 +18,6 @@ package com.qaprosoft.carina.demo.gui.pages;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.qaprosoft.carina.core.foundation.utils.Configuration;
-import com.qaprosoft.carina.core.foundation.utils.R;
-import com.qaprosoft.carina.core.foundation.webdriver.decorator.PageOpeningStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -44,7 +41,6 @@ public class CompareModelsPage extends AbstractPage {
         super(driver);
         setUiLoadedMarker(compareMenu);
         setPageAbsoluteURL(comparePageUrl);
-        //setPageURL("/compare.php3");
     }
 
     public List<ModelSpecs> compareModels(String... models) {
@@ -65,4 +61,5 @@ public class CompareModelsPage extends AbstractPage {
         }
         return modelSpecs;
     }
+
 }

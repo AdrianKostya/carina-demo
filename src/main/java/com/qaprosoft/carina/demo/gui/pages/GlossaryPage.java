@@ -34,9 +34,8 @@ public class GlossaryPage extends AbstractPage {
         for (int i = 0; i < glossaryItem.size(); i++) {
             List<String> stringLink = glossaryItem.get(i).getTitles();
             for (String str : stringLink) {
-
-                if (!(str.toUpperCase().charAt(1) == glossaryHeader.get(i).getText().charAt(0))) {
-                    if (!(Character.isDigit(str.charAt(1)) && Character.isDigit(glossaryHeader.get(i).getText().charAt(0)))) {
+                if (!(str.toUpperCase().charAt(0) == glossaryHeader.get(i).getText().charAt(0))) {
+                    if (!(Character.isDigit(str.charAt(0)) && Character.isDigit(glossaryHeader.get(i).getText().charAt(0)))) {
                         LOGGER.error("The first character does not match the title");
                         return false;
                     }

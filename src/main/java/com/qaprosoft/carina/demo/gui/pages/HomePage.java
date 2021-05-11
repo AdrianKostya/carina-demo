@@ -21,6 +21,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
+import com.qaprosoft.carina.demo.gui.components.PhoneModelBlock;
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
 import com.qaprosoft.carina.core.foundation.utils.R;
 import com.qaprosoft.carina.demo.gui.components.HeaderGSM;
@@ -78,6 +79,9 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//a[@href='register.php3']")
     private ExtendedWebElement registerBtn;
 
+    @FindBy(xpath = "//*[@id='body']/aside/div[1]/ul")
+    private PhoneModelBlock phoneModelList;
+
     public HomePage(WebDriver driver) {
         super(driver);
         setUiLoadedMarker(newsColumn);
@@ -111,6 +115,10 @@ public class HomePage extends AbstractPage {
 
     public boolean isPageOpened(){
         return top10Text.isElementPresent();
+    }
+
+    public PhoneModelBlock getPhoneModelList(){
+        return phoneModelList;
     }
 
 }
