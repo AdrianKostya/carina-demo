@@ -194,6 +194,5 @@ public class GSMArenaTest extends AbstractTest {
         Assert.assertTrue(opinionPage.sortByBestRating().isCommentRate(0), "Comment  cant  be rate");
         Assert.assertTrue(opinionPage.sortByBestRating().isCommentUnrate(0), "Comment  cant  be unrate");
     }
-    
 }
 
