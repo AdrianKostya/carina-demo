@@ -15,8 +15,10 @@
  */
 package com.qaprosoft.carina.demo.gui.components;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.demo.gui.pages.GlossaryPage;
@@ -25,6 +27,9 @@ import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.NewsPage;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FooterMenu extends AbstractUIObject {
 
@@ -38,7 +43,7 @@ public class FooterMenu extends AbstractUIObject {
     private ExtendedWebElement newsLink;
 
     @FindBy(xpath = "//a[@href='glossary.php3']")
-    private ExtendedWebElement glossaryLink;
+    private WebElement glossaryLink;
 
     public FooterMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
@@ -60,7 +65,8 @@ public class FooterMenu extends AbstractUIObject {
     }
 
     public GlossaryPage openGlossaryPage(){
-        glossaryLink.click();
+WebDriverWait wait = new WebDriverWait(driver, 10);
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[@href='glossary.php3']"))).click();
         return new GlossaryPage(getDriver());
     }
 

@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
@@ -16,6 +17,7 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 
 public class OpinionSortingWindow extends AbstractUIObject {
+    private final static Logger LOGGER = Logger.getLogger(OpinionSortingWindow.class);
 
     @FindBy(xpath = "//span[@class='thumbs-score']")
     private List<ExtendedWebElement> rating;
@@ -35,35 +37,42 @@ public class OpinionSortingWindow extends AbstractUIObject {
 
 
     public boolean isRatingSorted() {
+        boolean currentValue = true, globalValue = true;
         if (!rating.isEmpty()) {
             for (int i = 0; i < rating.size() - 1; i++) {
-                int previousRating = Integer.parseInt(rating.get(i).getText());
+                int firstRating = Integer.parseInt(rating.get(i).getText());
                 int nextRating = Integer.parseInt(rating.get(i + 1).getText());
-                if (previousRating < nextRating) {
-                    return false;
+                LOGGER.info("First(Heigh) rating"+ firstRating+ "     "+ "NextRating(Low)"+nextRating);
+                if (firstRating < nextRating) {
+                    currentValue = false;
                 }
+                globalValue = currentValue;
             }
-            return true;
         }
-        return false;
+        return globalValue;
     }
 
     public boolean isRatingSortedByStream(){
+        boolean currentValue = true, globalValue = true;
         if (!rating.isEmpty()) {
             List<String> ratingStringList = new ArrayList<>();
             for (ExtendedWebElement rating : rating) {
                 ratingStringList.add(rating.getText());
             }
             List<String> sortedList = ratingStringList.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+
+            System.out.println("Rated string List : "+ratingStringList);
+            System.out.println("Sorted List reversed : "+sortedList);
             if (!ratingStringList.equals(sortedList)) {
-                return false;
+                currentValue = false;
             }
-            return true;
+            globalValue = currentValue;
         }
-        return false;
+        return globalValue;
     }
 
   public boolean isDateSortedNewestFirst() {
+        boolean currentValue = true, globalValue = true;
         if (!time.isEmpty()) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
             for (int i = 0; i < time.size() - 1; i++) {
@@ -76,18 +85,19 @@ public class OpinionSortingWindow extends AbstractUIObject {
                     date2 = simpleDateFormat.parse(timeStr2);
                     int result = date.compareTo(date2);
                     if (result == -1) {
-                        return false;
+                        currentValue = false;
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
             }
-            return true;
+            globalValue = currentValue;
         }
-        return false;
+        return globalValue;
     }
 
     public boolean isDateSortedOldestFirst() {
+        boolean currentValue = true, globalValue = true;
         if (!time.isEmpty()) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
             for (int i = 0; i < time.size() - 1; i++) {
@@ -100,15 +110,15 @@ public class OpinionSortingWindow extends AbstractUIObject {
                     date2 = simpleDateFormat.parse(timeStr2);
                     int result = date.compareTo(date2);
                     if (result == 1) {
-                        return false;
+                        currentValue = false;
                     }
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
             }
-            return true;
+            globalValue = currentValue;
         }
-        return false;
+        return globalValue;
     }
 
     public boolean isCommentRate(int index) {
@@ -125,16 +135,17 @@ public class OpinionSortingWindow extends AbstractUIObject {
     }
 
     public boolean isCommentUnrate(int index) {
+        boolean currentValue = true, globalValue = true;
         int initialRating = Integer.parseInt(rating.get(index).getText());
         rateDown.get(index).click();
         int secondRating = Integer.parseInt(rating.get(index).getText());
         if (!rating.isEmpty()) {
             if (!(initialRating - secondRating==1)) {
-                return false;
+                currentValue = false;
             }
-            return true;
+            globalValue = currentValue;
         }
-        return false;
+        return globalValue;
     }
 
 }

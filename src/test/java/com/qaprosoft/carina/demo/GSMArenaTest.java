@@ -184,16 +184,16 @@ public class GSMArenaTest extends AbstractTest {
         UserGSM userGSM = userService.getUser();
         HomePage homePage= loginService.login(userGSM.getEmail(), userGSM.getPassword());
         PhoneModelBlock phoneModelBlock =homePage.getPhoneModelList();
-        BrandModelsPage brandModelsPage =phoneModelBlock.chosePhoneModel("Samsung");
+        BrandModelsPage brandModelsPage =phoneModelBlock.chosePhoneModel("Apple");
         brandModelsPage.getPopularityBtn();
         ModelInfoPage modelInfoPage = brandModelsPage.getFirstElement(0);
         OpinionPage opinionPage = modelInfoPage.clickOpinionBtn();
         Assert.assertTrue(opinionPage.sortByBestRating().isRatingSortedByStream(), "List is not sorted by best rating");
         Assert.assertTrue(opinionPage.sortByNewestDate().isDateSortedNewestFirst(), "List is not sorted by newestDateFirst");
         Assert.assertTrue(opinionPage.sortByLatestDate().isDateSortedOldestFirst(),"List is not sorted by LatestDateFirst");
-        Assert.assertTrue(opinionPage.sortByBestRating().isCommentRate(0), "We cant rate");
-        Assert.assertTrue(opinionPage.sortByBestRating().isCommentUnrate(0), "We cant unrate");
+        Assert.assertTrue(opinionPage.sortByBestRating().isCommentRate(0), "Comment  cant  be rate");
+        Assert.assertTrue(opinionPage.sortByBestRating().isCommentUnrate(0), "Comment  cant  be unrate");
     }
-
+    
 }
 

@@ -1,11 +1,11 @@
 package com.qaprosoft.carina.demo.gui.components;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.FindBy;
+
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.pages.PhoneFinderPage;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.FindBy;
 
 public class PhoneFinderBtn extends AbstractUIObject {
 
@@ -16,12 +16,9 @@ public class PhoneFinderBtn extends AbstractUIObject {
         super(driver);
     }
 
-
     public PhoneFinderPage getPhoneFinderPage(){
         finderButton.click();
         return new PhoneFinderPage(getDriver());
     }
-
-
 
 }
