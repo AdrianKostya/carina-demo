@@ -1,6 +1,6 @@
 {
   "name": "Adrcos Ragmulart",
   "gender": "Male",
-  "email": "romina@gmail.com",
+  "email": "${email}",
   "status": "Active"
 }
