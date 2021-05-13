@@ -8,9 +8,6 @@ public class DeleteUser extends AbstractApiMethodV2 {
     public  DeleteUser(){
         super(null, "api.gorest/_get/_delete/rs.json");
         replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
-
-
-
         request.header("Authorization", "Bearer 7cc2706fcfa7044adc1a9ec1632ef9c7be7001181f0aa222147e7dd7c046f5f7");
     }
 }
