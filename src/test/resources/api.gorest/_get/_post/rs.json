@@ -1,0 +1,13 @@
+{
+  "code": 201,
+  "meta": "skip",
+  "data": {
+    "id": "skip",
+    "name": "skip",
+    "email": "skip",
+    "gender": "skip",
+    "status": "skip",
+    "created_at": "skip",
+    "updated_at": "skip"
+  }
+}
