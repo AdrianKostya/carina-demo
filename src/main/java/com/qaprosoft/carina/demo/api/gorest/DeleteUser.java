@@ -5,7 +5,7 @@ import com.qaprosoft.carina.core.foundation.utils.Configuration;
 
 public class DeleteUser extends AbstractApiMethodV2 {
 
-    public  DeleteUser(String id){
+    public  DeleteUser(int id){
         super(null, "api.gorest/_get/_delete/rs.json");
         replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
         replaceUrlPlaceholder("id", String.valueOf(id));
