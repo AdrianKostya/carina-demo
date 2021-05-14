@@ -6,13 +6,7 @@ import com.qaprosoft.carina.demo.api.gorest.DeleteUser;
 import com.qaprosoft.carina.demo.api.gorest.GetUser;
 import com.qaprosoft.carina.demo.api.gorest.PostUser;
 import io.restassured.path.json.JsonPath;
-import org.junit.jupiter.api.Order;
 import org.testng.annotations.Test;
-
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.List;
 
 public class MyApiTest extends AbstractTest {
     int id=0;
